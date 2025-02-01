@@ -28,12 +28,14 @@
 
     <div class="prose max-w-none">
       <p class="text-xl text-nord-6 mb-8">{{ guideItem.summary }}</p>
-      <div class="text-nord-6 whitespace-pre-wrap">{{ guideItem.content }}</div>
+      <div class="text-nord-6 whitespace-pre-wrap"><QuillPreview v-model="guideItem.content" /></div>
     </div>
   </div>
 </template>
 
 <script setup>
+import QuillPreview from '~/components/QuillPreview.vue';
+
 const route = useRoute()
 const { guides } = useContent()
 

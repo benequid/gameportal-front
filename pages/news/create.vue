@@ -1,6 +1,6 @@
 <template>
   <div class="max-w-2xl mx-auto">
-    <h1 class="text-3xl font-bold mb-8">Опубликовать новость</h1>
+    <h1 class="text-3xl font-bold mb-8">Опубликовать Новость</h1>
 
     <form @submit.prevent="handleSubmit" class="flex flex-col gap-6">
       <div>
@@ -25,12 +25,7 @@
 
       <div>
         <label class="block text-sm font-medium text-nord-6 mb-2">Содержание</label>
-        <textarea
-          v-model="form.content"
-          required
-          rows="6"
-          class="w-full bg-nord-0 text-nord-6 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-nord-8"
-        ></textarea>
+        <Editor v-model="form.content" />
       </div>
 
       <div>
@@ -61,7 +56,7 @@
         >
       </div>
 
-      <button type="submit" class="w-full bg-nord-3 text-white px-6 py-2 rounded-lg hover:bg-yellow-600">
+      <button type="submit" class="w-full bg-nord-3 text-white px-6 py-2 rounded-lg hover:bg-nord-8">
         Опубликовать
       </button>
     </form>
@@ -71,6 +66,7 @@
 <script setup>
 const router = useRouter()
 const { addNews } = useContent()
+import Editor from '~/components/Editor.vue';
 
 const form = reactive({
   title: '',
